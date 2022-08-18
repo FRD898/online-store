@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-
+import Image from "next/image";
+import {Product}  from "../utils/onlineStoreTypes";
 const StyledCardContainer = styled.div`
     padding: 1.5rem;
     color: inherit;
@@ -20,7 +21,7 @@ const StyledCardContainer = styled.div`
         border-color: #0070f3;
     }
 `
-const StyledImg = styled.img`
+const StyledImg = styled(Image)`
     width: 80;
     height: 74;
 `
@@ -36,6 +37,14 @@ color: red;
 font-weight: 600;
 `
 
+const StyledText = styled.span`
+    height: 100%;
+    white-space: nowrap; 
+    width: 100px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+`
+
 const StyledButton = styled.button`
     border-radius: 50%;
     height: 48px;
@@ -43,13 +52,23 @@ const StyledButton = styled.button`
     font-size: 38px;
 `
 
-export default function Card() {
+interface Props {
+    product:Product,
+  }
+  
+
+export default function Card(props:Props) {
     return (
         <StyledCardContainer>
-            <StyledImg src='https://plazavea.vteximg.com.br/arquivos/ids/442423-1000-1000/20202120.jpg?v=637388408426600000'/>
+            <StyledImg 
+            src={props.product.image}
+            alt={"image"}
+            width="80px"
+            height="74px"
+            />
             <StyledInfoContainer>
-                <span>Yogurt Laive</span>
-                <StyledPrice>Price</StyledPrice>
+                <StyledText title={props.product.title}>{props.product.title}</StyledText>
+                <StyledPrice>{props.product.price}</StyledPrice>
             </StyledInfoContainer>
             <StyledButton>
                 +
