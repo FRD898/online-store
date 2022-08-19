@@ -25,6 +25,13 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
+const StyledHomePageContainer = styled.div`
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  padding-top: 100px;
+`
+
 interface Props {
   data:Product[],
 }
@@ -32,10 +39,10 @@ interface Props {
 const Home = (props:Props) => {
   return (
     <BasicLayout>
-      <Title>Title</Title>
-      {console.log("2",props.data)}
-      <SearchProducts products ={props.data}></SearchProducts>
-      <OrderResume></OrderResume>
+      <StyledHomePageContainer>
+        <SearchProducts products ={props.data}></SearchProducts>
+        <OrderResume></OrderResume>
+      </StyledHomePageContainer>
     </BasicLayout>
   );
 };

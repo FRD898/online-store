@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Card from "./Card";
 import { Product } from "../utils/onlineStoreTypes";
 import EmptyList from "./EmptyList";
+import Counter from "./Counter";
 
 const StyledSearchInput = styled.input`
   width: 360px;
@@ -36,7 +37,6 @@ export default function SearchProducts(props:Props){
         <Card product={props.products[1]}></Card>
         <Card product={props.products[1]}></Card>
       </StyledListContainer>
-      <EmptyList/>
     </StyledSearchContainer>
   )
 }
