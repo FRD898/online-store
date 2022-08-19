@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BsCartFill} from 'react-icons/bs'
+import Image from 'next/image';
 
 const StyledEmptyContainer = styled.div`
     display:flex;
@@ -25,7 +25,7 @@ const StyledText = styled.span`
 export default function EmptyList(){
     return (
         <StyledEmptyContainer>
-            <BsCartFill size={56}/>
+            <Image src="/cart-icon.svg" width={53} height={45}/>
             <StyledImportantText>Your cart is empty</StyledImportantText>
             <StyledText>Seems like you haven't chosen what to buy...</StyledText>
         </StyledEmptyContainer>

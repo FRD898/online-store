@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FaTruck} from "react-icons/fa"
+import Image from "next/image";
 
 const StyledResumeContainer = styled.div`
 display: flex;
@@ -49,7 +49,8 @@ export default function OrderResume(){
     return(
         <StyledResumeContainer>
             <StyledDateContainer>
-                <FaTruck size={18} color="#0500FF"/> Buy now and get it by 05/24/19
+                <Image src="/truck-icon.svg" width={18} height={20}/>
+                Buy now and get it by 05/24/19
             </StyledDateContainer>
             <StyledPriceContainer>
                 <StyledPriceItem>
