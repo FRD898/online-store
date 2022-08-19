@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import SearchProducts from "../components/SearchProducts";
 import { GetStaticProps} from "next"
 import { Product } from "../utils/onlineStoreTypes";
+import OrderResume from "../components/OrderResume";
 const Title = styled.h1`
   color: red;
 `;
@@ -34,6 +35,7 @@ const Home = (props:Props) => {
       <Title>Title</Title>
       {console.log("2",props.data)}
       <SearchProducts products ={props.data}></SearchProducts>
+      <OrderResume></OrderResume>
     </BasicLayout>
   );
 };

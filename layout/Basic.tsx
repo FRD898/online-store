@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 24px;
     color: #333333;
+    background: #F7F7F9;
   }
   *,
   *::before,

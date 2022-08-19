@@ -4,3 +4,11 @@ export interface Product {
     price: number;
     image: string;
 }
+
+export interface Cart {
+    date: Date;
+    productsValue: number;
+    shippingCost: number;
+    taxes: number;
+    total: number;
+}

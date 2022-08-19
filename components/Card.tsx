@@ -3,10 +3,7 @@ import Image from "next/image";
 import {Product}  from "../utils/onlineStoreTypes";
 const StyledCardContainer = styled.div`
     padding: 1.5rem;
-    color: inherit;
-    text-decoration: none;
-    border: 1px solid black;
-    border-radius: 10px;
+    border-bottom: 1px solid  #DDDDDD;
     transition: color 0.15s ease, border-color 0.15s ease;
     width: 100%;
     display: flex;
@@ -20,6 +17,7 @@ const StyledCardContainer = styled.div`
     :active {
         border-color: #0070f3;
     }
+    margin: 10px 0px;
 `
 const StyledImg = styled(Image)`
     width: 80;
