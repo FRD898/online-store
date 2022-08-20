@@ -1,20 +1,36 @@
-import styled from "styled-components";
+
 import BasicLayout from "../layout/Basic";
-import Card from "../components/Card";
-import SearchProducts from "../components/SearchProducts";
 import { GetStaticProps} from "next"
 import { Product } from "../utils/onlineStoreTypes";
-import OrderResume from "../components/OrderResume";
-const Title = styled.h1`
-  color: red;
-`;
+import { ApolloClient, gql, InMemoryCache, ApolloProvider, NormalizedCacheObject, useQuery} from "@apollo/client";
+import { cartVar } from "../utils/onlineStoreTypes";
+import HomePage from "../components/HomePage";
 
-const test = {
-  id: 1,
-  title: "Yogurt Laive",
-  price: 12.45,
-  image: "https://plazavea.vteximg.com.br/arquivos/ids/442423-1000-1000/20202120.jpg?v=637388408426600000",
-}
+const cache = new InMemoryCache({
+  typePolicies:{
+    Query:{
+      fields:{
+        cart:{
+          read(){
+            return cartVar();
+          }
+        },
+        products:{
+          read(){
+            let p:Product[]=[]
+            return p;
+          }
+        }
+      }
+    }
+  }
+
+})
+
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache,
+});
+
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://fakestoreapi.com/products`)
@@ -25,12 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const StyledHomePageContainer = styled.div`
-  display: flex;
-  width: 100vw;
-  justify-content: space-evenly;
-  padding-top: 100px;
-`
+
 
 interface Props {
   data:Product[],
@@ -38,12 +49,11 @@ interface Props {
 
 const Home = (props:Props) => {
   return (
-    <BasicLayout>
-      <StyledHomePageContainer>
-        <SearchProducts products ={props.data}></SearchProducts>
-        <OrderResume></OrderResume>
-      </StyledHomePageContainer>
-    </BasicLayout>
+    <ApolloProvider client={client}>
+      <BasicLayout>
+        <HomePage data={props.data}></HomePage>
+      </BasicLayout>
+    </ApolloProvider>
   );
 };
 
