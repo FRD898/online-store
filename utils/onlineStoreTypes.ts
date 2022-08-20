@@ -24,7 +24,7 @@ export interface Cart {
 const CartInitialValue: Cart = {
     date: new Date(),
     productId: null,
-    numberOfProducts: 0.0,
+    numberOfProducts: 0,
     productsValue: 0.0,
     shippingCost: 0.0,
     taxes: 0.0,
