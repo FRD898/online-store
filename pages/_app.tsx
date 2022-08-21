@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Product } from "../utils/onlineStoreTypes";
 import BasicLayout from "../layout/Basic";
