@@ -27,7 +27,6 @@ const StyledText = styled.span`
 
 export default function Counter(){
     const {data, error, loading} = useQuery(GET_CART);
-    console.log(data)
     const handleCounter = (type:string)=>{
         if(type=="red")
             if(data.cart.numberOfProducts>1)

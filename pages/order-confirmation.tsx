@@ -30,10 +30,11 @@ const Code:string = "P0001";
 
 const Confirmation = () => {
   const {data,error,loading} = useQuery(GET_LAST_ORDER)
-  console.log("newPage")
+  //console.log("newPage")
   useEffect(()=>{
-    console.log("renderizado")
+    //console.log("renderizado")
     return function cleanup(){
+      console.log("data to update",data.order.lastNumber);
       Update_Order(data.order.lastNumber+1)
     }
   },[])
