@@ -2,7 +2,7 @@
 import { GetStaticProps} from "next"
 import { Product } from "../utils/onlineStoreTypes";
 
-import HomePage from "../components/HomePage";
+import HomePage from "../components/CartPage/HomePage";
 
 
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Product, EmptyProduct } from "../utils/onlineStoreTypes";
-import EmptyList from "./EmptyList";
-import Counter from "./Counter";
+import { Product, EmptyProduct } from "../../../utils/onlineStoreTypes";
+import EmptyList from "./EmptyList/EmptyList";
+import Counter from "./Counter/Counter";
 
 const StyledSearchInput = styled.input`
   width: 360px;
@@ -23,7 +23,7 @@ const StyledSearchContainer = styled.div`
 
 import { gql, ReactiveVar, useQuery } from "@apollo/client";
 import { useState } from "react";
-import ProductList from "./ProductList";
+import ProductList from "./ProductList/ProductList";
 export const GET_CART = gql`
   query GetCart{
     cart @client{

@@ -13,10 +13,3 @@ export const GET_CART = gql`
         }
     }
 `
-export const GET_LAST_ORDER = gql`
-    query GetOrder{
-        order @client{
-            lastNumber
-        }
-    }
-`

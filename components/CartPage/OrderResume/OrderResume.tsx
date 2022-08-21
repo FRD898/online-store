@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { gql, ReactiveVar, useQuery } from "@apollo/client";
-import { Cart, cartVar, EmptyProduct } from "../utils/onlineStoreTypes";
-import { GET_CART } from "../operations/queries/getCart";
-import { Update_Cart } from "../operations/mutations/updateCart";
+import { Cart, cartVar, EmptyProduct } from "../../../utils/onlineStoreTypes";
+import { GET_CART } from "../../../operations/queries/cart/getCart";
+import { Update_Cart } from "../../../operations/mutations/update";
 import Link from "next/link";
 
 const StyledResumeContainer = styled.div`

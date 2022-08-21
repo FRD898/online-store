@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import BasicLayout from "../layout/Basic";
+import BasicLayout from "../../layout/Basic";
 import Image from 'next/image'
 import Link from 'next/link'
 import { useQuery } from "@apollo/client";
-import { GET_LAST_ORDER } from "../operations/queries/order/getOrder";
+import { GET_LAST_ORDER } from "../../operations/queries/order/getOrder";
 import { useEffect } from "react";
-import { Update_Order } from "../operations/mutations/update";
+import { Update_Order } from "../../operations/mutations/update";
 
 
 const StyledContainer = styled.div`
@@ -32,7 +32,7 @@ const GenerateCode = (number:number):string=>{
 }
 const Code:string = "P0001";
 
-const Confirmation = () => {
+const OrderPage= () => {
   const {data,error,loading} = useQuery(GET_LAST_ORDER)
   //console.log("newPage")
   useEffect(()=>{
@@ -55,4 +55,4 @@ const Confirmation = () => {
       </BasicLayout>
     );
   };
-export default Confirmation;
+export default OrderPage;

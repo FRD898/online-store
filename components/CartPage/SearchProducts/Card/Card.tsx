@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Image from "next/image";
-import {EmptyProduct, Product}  from "../utils/onlineStoreTypes";
+import {EmptyProduct, Product}  from "../../../../utils/onlineStoreTypes";
 import { useQuery } from '@apollo/client';
-import { GET_CART } from '../operations/queries/getCart';
-import { Update_Cart } from '../operations/mutations/updateCart';
+import { GET_CART } from '../../../../operations/queries/cart/getCart';
+import { Update_Cart } from '../../../../operations/mutations/update';
 
 const StyledCardContainer = styled.div`
     padding: 1.5rem;

@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { Product } from "../utils/onlineStoreTypes";
+import { Product } from "../../../../utils/onlineStoreTypes";
 import { useQuery } from '@apollo/client';
-import { GET_CART } from '../operations/queries/getCart';
-import { Update_Cart } from '../operations/mutations/updateCart';
+import { GET_CART } from '../../../../operations/queries/cart/getCart';
+import { Update_Cart } from '../../../../operations/mutations/update';
 const StyledCounterContainer = styled.div`
     background: #FF8000;
     display: flex;

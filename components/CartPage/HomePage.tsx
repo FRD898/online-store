@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Product } from "../utils/onlineStoreTypes";
-import OrderResume from "./OrderResume";
-import SearchProducts from "./SearchProducts";
+import { Product } from "../../utils/onlineStoreTypes";
+import OrderResume from "./OrderResume/OrderResume";
+import SearchProducts from "./SearchProducts/SearchProducts";
 const StyledHomePageContainer = styled.div`
 display: flex;
 width: 100vw;

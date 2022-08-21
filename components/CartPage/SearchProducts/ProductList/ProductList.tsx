@@ -1,9 +1,9 @@
 
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import { cartVar, Product } from "../utils/onlineStoreTypes";
-import Card from "./Card";
-import Counter from "./Counter";
+import { cartVar, Product } from "../../../../utils/onlineStoreTypes";
+import Card from "../Card/Card";
+import Counter from "../Counter/Counter";
 const StyledListContainer = styled.div`
 height: 480px;
 width: 360px;
