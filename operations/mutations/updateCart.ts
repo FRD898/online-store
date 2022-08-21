@@ -1,14 +1,13 @@
-import { cartVar } from "../../utils/onlineStoreTypes";
+import { cartVar,orderVar } from "../../utils/onlineStoreTypes";
 
 export const Update_Cart= (productId:number|null, productPrice:number, amount:number)=>{
     console.log("llega",productId, productPrice, amount);
     
     //Rule 1 - Delivery Date
     let deliveryDate:Date= new Date();
-    deliveryDate.getDay()>=4?
-    deliveryDate.setDate(deliveryDate.getDate() + 7 - deliveryDate.getDay()):
+    deliveryDate.getDay()>=5?
+    deliveryDate.setDate(deliveryDate.getDate() + 8 - deliveryDate.getDay()):
     deliveryDate.setDate(deliveryDate.getDate() + 1);
-
     //Rule 2 - Pricing
     let products = productPrice*amount;
     let shippingCost = 0.1*products;
@@ -27,6 +26,12 @@ export const Update_Cart= (productId:number|null, productPrice:number, amount:nu
         shippingCost: shippingCost,
         taxes: taxes,
         total: total,
+    })
+}
+
+export const Update_Order = (number:number)=>{
+    orderVar({
+        lastNumber:number+1
     })
 }
 

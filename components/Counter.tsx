@@ -30,7 +30,7 @@ export default function Counter(){
     console.log(data)
     const handleCounter = (type:string)=>{
         if(type=="red")
-            if(data.cart.numberOfProducts>0)
+            if(data.cart.numberOfProducts>1)
                 Update_Cart(data.cart.productId, data.cart.price, data.cart.numberOfProducts - 1)
         if(type=="inc")
             if(data.cart.numberOfProducts<10)

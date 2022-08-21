@@ -50,13 +50,17 @@ const StyledText = styled.span`
 const StyledButtonContainer = styled.div`
     display:flex;
     flex-direction:column;
+    height: 120px;
 `
 
 const StyledButton = styled.button`
     border-radius: 50%;
     height: 48px;
     width: 48px;
-    font-size: 38px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 0;
 `
 const StyledDeleteButton = styled.button`
     height: 18px;

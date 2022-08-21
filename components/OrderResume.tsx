@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { gql, ReactiveVar, useQuery } from "@apollo/client";
-import { Cart, cartVar } from "../utils/onlineStoreTypes";
+import { Cart, cartVar, EmptyProduct } from "../utils/onlineStoreTypes";
+import { GET_CART } from "../operations/queries/getCart";
+import { Update_Cart } from "../operations/mutations/updateCart";
+import Link from "next/link";
 
 const StyledResumeContainer = styled.div`
 display: flex;
@@ -36,7 +39,7 @@ const StyledButton = styled.button<{empty:boolean}>`
     text-align: center;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    color: #C1C1C1;
+    color: ${p=>(p.empty? "#C1C1C1" : "white")}; ;
     width: 360px;
     height: 48px;
 `
@@ -47,80 +50,43 @@ font-weight: ${p=>(p.bold? 600: 400)};
 color: ${p=>(p.color?p.color:"#333333")};
 `
 
-export const GET_CART = gql`
-  query GetCart{
-    cart @client{
-      date
-      productId
-      numberOfProducts
-      productsValue
-      shippingCost
-      taxes
-      total
-    }
-  }
-`
-export const GET_PRODUCTS = gql`
-  query GetProducts{
-    products @client{
-     id
-     tittle
-     price
-     image
-    }
-  }
-`
 
-export function updateCart(){
-    
-    return()=>{
-        console.log("updating...")
-        cartVar({
-            date: new Date(),
-            productId: null,
-            numberOfProducts: 0.0,
-            productsValue: 0.0,
-            shippingCost: 0.0,
-            taxes: 0.0,
-            total: 10.0,
-        })
-    }
-}
-/*
-export const ADD_PRODUCT = gql`
-    mutation AddProduct($)
-`*/
+
+
 
 export default function OrderResume(){
-    const cartResult = useQuery(GET_CART);
-    const productsResult = useQuery(GET_PRODUCTS);
+    const {data,error, loading} = useQuery(GET_CART);
     return(
         <StyledResumeContainer>
             <StyledDateContainer>
                 <Image src="/truck-icon.svg" width={18} height={20}/>
-                Buy now and get it by <b>{cartResult.data.cart.date.toLocaleDateString()}</b>
+                Buy now and get it by <b>{data.cart.date.toLocaleDateString()}</b>
             </StyledDateContainer>
             <StyledPriceContainer>
                 <StyledPriceItem>
                     <StyledText >Products</StyledText>
-                    <StyledText>$ {cartResult.data.cart.productsValue.toFixed(2)}</StyledText>
+                    <StyledText>$ {data.cart.productsValue.toFixed(2)}</StyledText>
                 </StyledPriceItem>
                 <StyledPriceItem highlighted={true}>
                     <StyledText bold={true}>Shipping Cost</StyledText>
-                    <StyledText>$ {cartResult.data.cart.shippingCost.toFixed(2)}</StyledText>
+                    <StyledText>$ {data.cart.shippingCost.toFixed(2)}</StyledText>
                 </StyledPriceItem>
                 <StyledPriceItem>
                     <StyledText>Taxes</StyledText>
-                    <StyledText>$ {cartResult.data.cart.taxes.toFixed(2)}</StyledText>
+                    <StyledText>$ {data.cart.taxes.toFixed(2)}</StyledText>
                 </StyledPriceItem>
                 <StyledPriceItem>
                     <StyledText bold={true}>Total</StyledText>
-                    <StyledText color="red" bold={true}>$ {cartResult.data.cart.total.toFixed(2)}</StyledText>
+                    <StyledText color="red" bold={true}>$ {data.cart.total.toFixed(2)}</StyledText>
                 </StyledPriceItem>
             </StyledPriceContainer>
-            <StyledButton empty={true} onClick={(e)=>updateCart()()}>
+            <Link href="/order-confirmation">
+            <StyledButton empty={data.cart.total<50.0?true:false}
+                onClick={(e)=>Update_Cart(null,0.0,0.0)}
+                disabled={data.cart.total<50.0?true:false}>
                 COMPLETE ORDER
             </StyledButton>
+            </Link>
         </StyledResumeContainer>
     )
 }

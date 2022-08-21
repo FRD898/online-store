@@ -39,5 +39,15 @@ const CartInitialValue: Cart = {
     taxes: 0.0,
     total: 0.0,
 }
-
 export const cartVar = makeVar<Cart>(CartInitialValue);
+
+
+export interface Order{
+    lastNumber:number
+}
+
+const initialOrder:Order ={
+    lastNumber:0
+}
+
+export const orderVar = makeVar<Order>(initialOrder);

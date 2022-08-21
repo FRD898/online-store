@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { Product } from "../utils/onlineStoreTypes";
 import BasicLayout from "../layout/Basic";
 import { ApolloClient, gql, InMemoryCache, ApolloProvider, NormalizedCacheObject, useQuery} from "@apollo/client";
-import { cartVar } from "../utils/onlineStoreTypes";
+import { cartVar, orderVar } from "../utils/onlineStoreTypes";
 
 const cache = new InMemoryCache({
   typePolicies:{
@@ -12,6 +12,11 @@ const cache = new InMemoryCache({
         cart:{
           read(){
             return cartVar();
+          }
+        },
+        order:{
+          read(){
+            return orderVar();
           }
         },
         products:{
