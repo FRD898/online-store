@@ -7,6 +7,13 @@ export interface Product {
     image: string;
 }
 
+export const EmptyProduct:Product = {
+    id: -1,
+    title: "",
+    price: 0.0,
+    image: ""
+}
+
 export interface ProductsData {
     products: Product[]
 }
@@ -14,6 +21,7 @@ export interface ProductsData {
 export interface Cart {
     date: Date;
     productId: number|null;
+    price:number;
     numberOfProducts: number;
     productsValue: number;
     shippingCost: number;
@@ -24,7 +32,8 @@ export interface Cart {
 const CartInitialValue: Cart = {
     date: new Date(),
     productId: null,
-    numberOfProducts: 0,
+    price:0.0,
+    numberOfProducts: 0.0,
     productsValue: 0.0,
     shippingCost: 0.0,
     taxes: 0.0,

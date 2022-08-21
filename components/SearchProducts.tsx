@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Product } from "../utils/onlineStoreTypes";
+import { Product, EmptyProduct } from "../utils/onlineStoreTypes";
 import EmptyList from "./EmptyList";
 import Counter from "./Counter";
 
@@ -21,9 +21,6 @@ const StyledSearchContainer = styled.div`
   
 `
 
-interface Props {
-  products:Product[],
-}
 import { gql, ReactiveVar, useQuery } from "@apollo/client";
 import { useState } from "react";
 import ProductList from "./ProductList";
@@ -40,11 +37,15 @@ export const GET_CART = gql`
     }
   }
 `
-
+interface Props {
+  products:Product[],
+}
 export default function SearchProducts(props:Props){
   const {data, error, loading} = useQuery(GET_CART);
-  const [item, setItem] = useState("")
-  const [searchProducts, setSearchProducts] = useState<Product[]>([])
+  const [item, setItem] = useState("");
+  const [searchProducts, setSearchProducts] = useState<Product[]>([]);
+  const [selectedItem, setSelectedItem] = useState<Product>(EmptyProduct);
+
   const handleSearch = (name:string)=>{
     const coincidence: Product[] = props.products.filter(prod => prod.title.toLowerCase().includes(name.toLowerCase()));
     setSearchProducts(coincidence)
@@ -63,8 +64,8 @@ export default function SearchProducts(props:Props){
 
       {searchProducts.length === 0?
       <EmptyList/>:
-      <ProductList products={searchProducts}/>
-    }
+      <ProductList products={searchProducts} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+      }
     </StyledSearchContainer>
   )
 }
