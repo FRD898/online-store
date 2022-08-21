@@ -1,31 +1,22 @@
 
 import { gql, useQuery } from "@apollo/client";
-import styled from "styled-components";
-import { cartVar, Product } from "../../../../utils/onlineStoreTypes";
+import { Product } from "../../../../utils/onlineStoreTypes";
 import Card from "../Card/Card";
 import Counter from "../Counter/Counter";
-const StyledListContainer = styled.div`
-height: 480px;
-width: 360px;
-overflow-y: auto;
-overflow-x: hidden;
-display: flex;
-flex-direction: column;
-align-items:end;
-`
+import { StyledListContainer } from "./CustomProductListStyles";
 
 export const GET_CART = gql`
-  query GetCart{
-    cart @client{
-      date
-      productId
-      numberOfProducts
-      productsValue
-      shippingCost
-      taxes
-      total
+    query GetCart{
+        cart @client{
+            date
+            productId
+            numberOfProducts
+            productsValue
+            shippingCost
+            taxes
+            total
+        }
     }
-  }
 `
 interface Props {
     products:Product[],

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import BasicLayout from "../../layout/Basic";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,26 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GET_LAST_ORDER } from "../../operations/queries/order/getOrder";
 import { useEffect } from "react";
 import { Update_Order } from "../../operations/mutations/update";
-
-
-const StyledContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 64px 358px;
-
-`
-
-const StyledText = styled.span<{size?:number, weight?: number, color?: string, pointer?: boolean}>`
-    font-size: ${p => p.size}px;
-    font-weight: ${p => p.weight};
-    color: ${p => p.color};
-    margin-top: 16px;
-    &:hover{
-      cursor:${p=>p.pointer?"pointer":"auto"}
-    }
-`
+import { StyledContainer, StyledText } from "./CustomOrderStyles";
 
 const GenerateCode = (number:number):string=>{
   return "p"+"0".repeat(4-number.toString().length)+number.toString()

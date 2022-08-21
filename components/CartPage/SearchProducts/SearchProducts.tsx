@@ -1,29 +1,11 @@
-import styled from "styled-components";
 import { Product, EmptyProduct } from "../../../utils/onlineStoreTypes";
 import EmptyList from "./EmptyList/EmptyList";
 import Counter from "./Counter/Counter";
 
-const StyledSearchInput = styled.input`
-  width: 360px;
-  height: 48px;
-  border: 1px solid #DDDDDD;
-  border-radius: 4px;
-  background: #FFFFFF;
-  color: black;
-  padding: 12px 16px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #333333;
-`
-
-const StyledSearchContainer = styled.div`
-  
-`
-
 import { gql, ReactiveVar, useQuery } from "@apollo/client";
 import { useState } from "react";
 import ProductList from "./ProductList/ProductList";
+import { StyledSearchContainer, StyledSearchInput } from "./CustomSearchProductsStyles";
 export const GET_CART = gql`
   query GetCart{
     cart @client{

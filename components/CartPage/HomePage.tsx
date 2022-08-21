@@ -1,14 +1,8 @@
-import styled from "styled-components";
+
 import { Product } from "../../utils/onlineStoreTypes";
+import { StyledHomePageContainer } from "./CustomHomerStyles";
 import OrderResume from "./OrderResume/OrderResume";
 import SearchProducts from "./SearchProducts/SearchProducts";
-const StyledHomePageContainer = styled.div`
-display: flex;
-width: 100vw;
-justify-content: space-evenly;
-padding-top: 100px;
-`
-
 
 interface Props {
     data:Product[],
