@@ -59,7 +59,7 @@ export default function OrderResume(){
     return(
         <StyledResumeContainer>
             <StyledDateContainer>
-                <Image src="/truck-icon.svg" width={18} height={20}/>
+                <Image alt="truck-icon" src="/truck-icon.svg" width={18} height={20}/>
                 Buy now and get it by <b>{data.cart.date.toLocaleDateString()}</b>
             </StyledDateContainer>
             <StyledPriceContainer>

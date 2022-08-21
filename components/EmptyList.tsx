@@ -25,9 +25,9 @@ const StyledText = styled.span`
 export default function EmptyList(){
     return (
         <StyledEmptyContainer>
-            <Image src="/cart-icon.svg" width={53} height={45}/>
+            <Image alt='empty cart icon' src="/cart-icon.svg" width={53} height={45}/>
             <StyledImportantText>Your cart is empty</StyledImportantText>
-            <StyledText>Seems like you haven't chosen what to buy...</StyledText>
+            <StyledText>Seems like you haven&apos;t chosen what to buy...</StyledText>
         </StyledEmptyContainer>
     )
 }
