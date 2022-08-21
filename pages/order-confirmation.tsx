@@ -17,12 +17,16 @@ const StyledContainer = styled.div`
 
 `
 
-const StyledText = styled.span<{size?:number, weight?: number, color?: string}>`
+const StyledText = styled.span<{size?:number, weight?: number, color?: string, pointer?: boolean}>`
     font-size: ${p => p.size}px;
     font-weight: ${p => p.weight};
     color: ${p => p.color};
     margin-top: 16px;
+    &:hover{
+      cursor:${p=>p.pointer?"pointer":"auto"}
+    }
 `
+
 const GenerateCode = (number:number):string=>{
   return "p"+"0".repeat(4-number.toString().length)+number.toString()
 }
@@ -44,12 +48,11 @@ const Confirmation = () => {
             <StyledText size={28} weight={600}>Thank you</StyledText>
             <StyledText>Your order <b>{GenerateCode(data.order.lastNumber+1)}</b> has been registered</StyledText>
             <Link href="/">
-                <StyledText color="#0500FF"> Continue shopping</StyledText>
+                <StyledText color="#0500FF" pointer={true}> Continue shopping</StyledText>
             </Link>
             <Image src="/success-icon.svg" alt="success-icon" width="308" height="288"/>
         </StyledContainer>
       </BasicLayout>
     );
   };
-  
-  export default Confirmation;
+export default Confirmation;

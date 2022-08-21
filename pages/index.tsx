@@ -8,7 +8,7 @@ import HomePage from "../components/HomePage";
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://fakestoreapi.com/products`)
+  const res = await fetch(process.env.API as string)
   const data:Product[] = await res.json()
   console.log("1",data)
   return {
